@@ -28,8 +28,6 @@
 
 
 var http  = require('http');
-var net   = require('net');
-var url   = require('url');
 var querystring = require('querystring');
 var request = require('request');
 

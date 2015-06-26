@@ -1,0 +1,27 @@
+{
+  "name": "slackwell",
+  "version": "1.0.0",
+  "description": "slackwell",
+  "main": "pdaemon.js",
+  "dependencies": {
+    "async": "^0.9",
+    "generic-pool": "^2.1.1",
+    "rare-profiles2": "git+ssh://git@github.com:rarelogic/rare-profiles2.git",
+    "redis": "^0.12.1",
+    "request": "^2.45.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rarelogic/pdaemon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rarelogic/pdaemon/issues"
+  },
+  "homepage": "https://github.com/rarelogic/pdaemon"
+}

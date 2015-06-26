@@ -334,7 +334,12 @@ function ParseMessage( message, done_cb ) {
 
         reply.text = from + ", I'm fixing it...";
 
-        Exec( 'node', [ appPath + 'repull', parts[1] ], function () {
+/*
+
+        // The following spawns a program and returns a message after it's done.
+        // of course, configure it to run a program you would like to run
+
+        Exec( 'node', [ '/code/fixing-app', parts[1] ], function () {
 
             slack( {
                 attachments: [{
@@ -345,12 +350,18 @@ function ParseMessage( message, done_cb ) {
 
         });
 
+*/
     }
     else if (parts[0] == 'do' && parts[1] == 'something') {
 
         reply.text = from + ", I'm issuing a 'do something' job.";
 
-        Exec( 'node', [ appPath + 'system_event', 'pause' ], function () {
+/*
+
+        // The following spawns a program and returns a message after it's done.
+        // of course, configure it to run a program you would like to run
+
+        Exec( 'node', [ '/code/something-app', 'pause' ], function () {
 
             slack( {
                 attachments: [{
@@ -361,6 +372,7 @@ function ParseMessage( message, done_cb ) {
 
         });
 
+*/
     }
 
     done_cb( reply );

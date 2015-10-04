@@ -1,13 +1,9 @@
 {
-  "name": "slackwell",
+  "name": "slack2daemon",
   "version": "1.0.0",
-  "description": "slackwell",
-  "main": "pdaemon.js",
+  "description": "slack2daemon lets you control services from slack",
+  "main": "slack-2-daemon-hook.js",
   "dependencies": {
-    "async": "^0.9",
-    "generic-pool": "^2.1.1",
-    "rare-profiles2": "git+ssh://git@github.com:rarelogic/rare-profiles2.git",
-    "redis": "^0.12.1",
     "request": "^2.45.0"
   },
   "devDependencies": {},
@@ -16,12 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rarelogic/pdaemon.git"
+    "url": "https://github.com/SethHamilton/slack2daemon.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rarelogic/pdaemon/issues"
-  },
-  "homepage": "https://github.com/rarelogic/pdaemon"
+  "homepage": "https://github.com/SethHamilton/slack2daemon"
 }

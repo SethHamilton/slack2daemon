@@ -1,6 +1,7 @@
 /*
 
-    slackwell - a bidirectional slack bot
+    Slack 2 Daemon - a bidirectional slack bot for controlling server resources
+    from slack.
 
     The MIT License (MIT)
 
@@ -27,7 +28,7 @@
 */
 
 
-var http  = require('http');
+var http = require('http');
 var querystring = require('querystring');
 var request = require('request');
 
@@ -39,11 +40,10 @@ var childProcess = require('child_process');
 // can reply back to the channel at the time the webhook is triggered.
 var slackURL = '<incoming web hook URL>';
 
-
 if ( process.argv.length != 3 ) {
 
     console.log( '' );
-    console.log( 'Slackwell requires needs a ip an port to listen on' );
+    console.log( 'Slack 2 Daemon requires needs a ip an port to listen on' );
     console.log( '   <myip>:<myport> <botname>' );
     console.log( '' );
     process.exit( 1 );
@@ -69,9 +69,10 @@ function slack( message ) {
 
 }
 
-// little wrapper for span, which essentially
-// allows you to run linux programs and get a callback when complete
-// obviously you want to control what is sent to this, and you
+// little wrapper for span, which allows you to run linux programs 
+// and get a callback once they've completed.
+//
+// Obviously you want to control what is sent to this, and you
 // should not provide any chat handlers to run user provided linux
 // commands.
 //
@@ -154,8 +155,9 @@ function toTitleCase(str)
 }
 
 
-// stick your help in here. \r\n add new lines to the text block.
-// we used slacks attachment formatting here to indent and add a little
+// AddHelp - stick your help in here. 
+//
+// I used slacks attachment formatting here to indent and add a little
 // color to the help menu. You could use the fields version of an
 // attachment also if you wanted to show the command sand describe them with
 // a one liner.
@@ -185,7 +187,7 @@ function AddHelp( reply ) {
 
 }
 
-// similar to the help function, but allows you to add
+// GenericNote- similar to the help function, but allows you to add
 // an indented and colored line of text under the standard
 // text header.
 //
@@ -209,7 +211,7 @@ function GenericNote( reply, note, color ) {
 
 }
 
-// placeholder for a status function
+// GetStatus - placeholder for a status function
 //
 // You may want your bot to report system status.
 // this is useful for a support team for example that may need to know
@@ -229,7 +231,6 @@ function GenericNote( reply, note, color ) {
 // added a few lines of code to your services that record a last checkin
 // time in a redis hash (a useful 6 lines of code!)
 //
-
 function GetStatus( reply, done_cb ) {
 
     // comment this one out if you implement something here
@@ -239,15 +240,16 @@ function GetStatus( reply, done_cb ) {
 /*
     // replace this with something smart!
     // the code shows roughly how to build out a slack
-    // attachment with fields, which can be visually pleaseing.
+    // attachment with fields, which can be visually pleasing.
+    //
+    // The scenario here is returning up/down status for
+    // a bunch of servers. In this example the all server statuses
+    // are all stored in a redis hash key which is populated
+    // by a fictional daemon that watches these sorts of things.
     //
     redis.hgetall( 'some::redis::hashkey', function( err, data ) {
 
-        //console.log( JSON.stringify( data, null, 4 ));
-
         var item = { fields: [] };
-
-        var now = Date.now();
 
         for (var i in data) {
 
@@ -269,7 +271,7 @@ function GetStatus( reply, done_cb ) {
 
 }
 
-// This handles the message from the end user!
+// ParseMessage - This handles the message from the end user!
 //
 // You will want to parse your commands here, and make this
 // as smart as you like.
@@ -393,7 +395,7 @@ function StartServer() {
 
     }).listen(myPort, myAddress);
 
-    console.log('+ Slackwell hook server answering on ' + myAddress + ':' + myPort);
+    console.log('+ Slack 2 Daemon hook server answering on ' + myAddress + ':' + myPort);
 };
 
 StartServer();
